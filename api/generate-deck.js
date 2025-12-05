@@ -1,6 +1,16 @@
-// Super simple deck generator – no AI, always succeeds
+// Super simple deck generator with CORS enabled – no AI yet
 
 module.exports = async (req, res) => {
+  // Allow requests from any origin (frontend)
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // Handle preflight OPTIONS request
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   const { idea, style } = req.body || {};
 
   const title = idea || "Untitled Project";
