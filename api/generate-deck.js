@@ -1,4 +1,4 @@
-// Super simple deck generator – no OpenAI, always works
+// Super simple deck generator – no AI, always succeeds
 
 module.exports = async (req, res) => {
   const { idea, style } = req.body || {};
